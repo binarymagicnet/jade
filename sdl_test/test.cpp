@@ -6,10 +6,10 @@
 DIM AS CHAR string[128]; // String used by txtIt & SDL_ttf
 
 // Conver Variable Argument into a string
-SUB txtIt(const char *pStr , ...) BEGIN
+SUB txtIt(CSTRING pStr , ...) BEGIN
     DIM AS va_list valist; // Type to hold information about variable arguments
     va_start(valist, pStr); // Initialize a variable argument list
-    vsprintf( string , pStr , valist ); // Print formatted variable argument list to string
+    vsprintf( string , pStr.c_str() , valist ); // Print formatted variable argument list to string
     va_end(valist); // This macro should be executed before the function
 ENDSUB
 
