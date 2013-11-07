@@ -41,7 +41,7 @@
 #define OR    ||
 #define CLASS class
 #define TYPE typedef struct
-#define ADDRESS &
+#define ADDR &
 #define INCR ++
 #define DECR --
 #define NEXT ++
