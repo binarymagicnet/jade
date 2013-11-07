@@ -6,7 +6,7 @@
 DIM AS CHAR string[128]; // String used by txtIt & SDL_ttf
 
 // Conver Variable Argument into a string
-SUB txtIt(char *pStr , ...) BEGIN
+SUB txtIt(const char *pStr , ...) BEGIN
     DIM AS va_list valist; // Type to hold information about variable arguments
     va_start(valist, pStr); // Initialize a variable argument list
     vsprintf( string , pStr , valist ); // Print formatted variable argument list to string
@@ -19,7 +19,7 @@ DIM AS INT NextTick , interval ; // Used by FPS_Fn
 // Initialize FPS_Fn( )
 SUB FPS_Initialize() BEGIN
     NextTick = 0 ;
-    interval = 1 * 1000 / FPS ; 
+    interval = 1 * 1000 / FPS ;
 ENDSUB
 
 // Frame Per Second Function  , put this in a loop
@@ -33,16 +33,16 @@ ENDSUB
 // This function load a image file to a surface
 // Set bCKey with colorkey (R,G,B) to clear a color on the image
 // Set alpha value FOR transparency 0(No transparent) ~ 255(Ivisible)
-FUNCTION SDL_Surface *ImgLoader(char *file, BOOL bCKey, INT r, INT g, INT b, INT alpha) BEGIN
+FUNCTION SDL_Surface *ImgLoader(CSTRING file, BOOL bCKey, INT r, INT g, INT b, INT alpha) BEGIN
 	SDL_Surface *pic;
-	pic = IMG_Load(file); // From SDL_image.h , load the image to pic
-	IF (pic==NULL) THEN 
-	    fprintf(stderr,"Missing image %s : %s\n",file,IMG_GetError());
+	pic = IMG_Load(file.c_str()); // From SDL_image.h , load the image to pic
+	IF (pic==NULL) THEN
+	    fprintf(stderr,"Missing image %s : %s\n",file.c_str(),IMG_GetError());
 	ENDIF
 	IF ( bCKey ) THEN
 		SDL_SetColorKey(pic,SDL_SRCCOLORKEY|SDL_RLEACCEL,SDL_MapRGB(pic->format,r,g,b));
  	ENDIF
-	IF (alpha) THEN 
+	IF (alpha) THEN
 	    SDL_SetAlpha(pic, SDL_SRCALPHA|SDL_RLEACCEL , 255 - alpha);
 	ENDIF
 	pic = SDL_DisplayFormat(pic);
@@ -50,13 +50,13 @@ FUNCTION SDL_Surface *ImgLoader(char *file, BOOL bCKey, INT r, INT g, INT b, INT
 ENDFUNCTION
 
 // Load a normal picture into a surface
-FUNCTION SDL_Surface *ImgLoader(LPCHAR file) BEGIN     
-    RETURN ImgLoader(file,1,0,0,0,0) ; 
+FUNCTION SDL_Surface *ImgLoader(CSTRING file) BEGIN
+    RETURN ImgLoader(file.c_str(),1,0,0,0,0) ;
 ENDFUNCTION
 
 // Load a pic & set the transparent color to (255,255,255) , no alpha
-FUNCTION SDL_Surface *ImgLoader(char *file,bool bCKey) BEGIN
-    RETURN ImgLoader(file,1,255,255,255,0) ; 
+FUNCTION SDL_Surface *ImgLoader(CSTRING file,bool bCKey) BEGIN
+    RETURN ImgLoader(file.c_str(),1,255,255,255,0) ;
 ENDFUNCTION
 
 
@@ -84,15 +84,15 @@ MAIN
     DIM AS SDL_Event event; // FOR keyboard event
     DIM AS BOOL bRun = 1; // The SELECT  of WHILE  loop
     // bKeyXXX Present the state of keyboard
-    DIM AS BOOL bKeyUP = 0 , bKeyDOWN = 0 , bKeyLEFT = 0 , bKeyRIGHT = 0; 
+    DIM AS BOOL bKeyUP = 0 , bKeyDOWN = 0 , bKeyLEFT = 0 , bKeyRIGHT = 0;
     DIM AS INT aTick = 0;
     DIM AS SHORT dx = 2; // The movement value when moving the object anim[ ]
     SDL_Surface *screen ;
-    ENUM BEGIN 
-        pic1, 
-        pic_No  
+    ENUM BEGIN
+        pic1,
+        pic_No
     ENDENUM
-    
+
     DIM AS SDL_Surface *anim[pic_No];
     DIM AS SDL_Rect animRect ; // The coordinate of anim[ ]
     animRect.x = 160 ;
@@ -115,28 +115,28 @@ MAIN
     WHILE (bRun) BEGIN
         aTick++;
         SDL_FillRect(screen , NULL , 0x221122);
-        
+
         IF ( aTick%6 == 1) xi++;
-        
+
         IF ( xi > 9 ) THEN
-            xi = 1; 
-            yi++; 
+            xi = 1;
+            yi++;
         ENDIF
-        
+
         IF ( yi > 9 ) yi = 1;
-        
+
         FOR(INT i=0 TO i < yi STEP i++ ) BEGIN
             animRect.x = 10 + i * 40 ;
             animRect.y = 200;
             SDL_BlitSurface( anim[0] , NULL , screen , &animRect );
         END
-        
+
         FOR (INT i=0 TO i < xi STEP i++ ) BEGIN
             animRect.x = 10 + i * 40 ;
             animRect.y = 240;
             SDL_BlitSurface( anim[0] , NULL , screen , &animRect );
         END
-    
+
         // A Multiplication Table
         FOR (INT i = 1 TO i <= 9 STEP i++) BEGIN
             FOR( INT j = 1 TO j <= 9 STEP j++) BEGIN
@@ -152,7 +152,7 @@ MAIN
                 SDL_BlitSurface( imgTxt , NULL , screen , &txtRect );
             END // FOR( INT j = 1 ; j <= 9 ; j++) { END
         END // FOR(INT i = 1 ; i <= 9 ; i++) { END
-        
+
         txtIt("%1d %1d %1d %1d", bKeyUP , bKeyDOWN , bKeyLEFT , bKeyRIGHT);
         fColor = fColorW; // Default is white color
         imgTxt = TTF_RenderText_Solid( font , string , fColor );
@@ -192,10 +192,10 @@ MAIN
                             bKeyDOWN = 0;
                         ENDCASE
                         CASE SDLK_LEFT:
-                            bKeyLEFT = 0;   
+                            bKeyLEFT = 0;
                         ENDCASE
                         CASE SDLK_RIGHT:
-                            bKeyRIGHT = 0;    
+                            bKeyRIGHT = 0;
                         ENDCASE
                         CASE_ELSE:
                         ENDCASE
@@ -208,7 +208,7 @@ MAIN
                 ENDCASE
             ENDSELECT // SELECT ( event.type ){ END
         WEND // WHILE ( SDLK_PollEvent( &event ) ){ END
-        
+
         // Deal with key states
         IF (bKeyUP) animRect.y = animRect.y - dx;
         IF (bKeyDOWN) animRect.y = animRect.y + dx;
@@ -216,7 +216,7 @@ MAIN
         IF (bKeyRIGHT) animRect.x = animRect.x + dx;
 
     WEND // WHILE (bRun) { END
-    
+
 
     RETURN 0;
 END
