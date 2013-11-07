@@ -1,4 +1,4 @@
-#include "../cppbas.inc"
+#include "../jade.h"
 #include "sdl.inc"
 
 DIM AS CHAR string[128]; // String used by txtIt & SDL_ttf
