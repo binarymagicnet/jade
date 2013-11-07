@@ -1,4 +1,4 @@
-Compile with:  g++ demo.cpp -o demo (or if using clang, use clang++ demo.cpp -o demo)
+Compile with:  g++ -Wall demo.cpp -o demo (or if using clang, use clang++ demo.cpp -o demo)
 
 This is just a proof of concept of using a BASIC-like syntax to program C++.
 
