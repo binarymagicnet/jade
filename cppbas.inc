@@ -71,6 +71,13 @@
 #define UINT unsigned int
 #define VECTOR std::vector
 #define MAP std::map
+#define CHAR char
+#define ENUM enum
+#define ENDENUM };
+#define EXIT exit
+#define BREAK break;
+#define SHORT short
+#define LPCHAR char*
 
 #ifndef TRUE
   #define TRUE 1
