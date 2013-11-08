@@ -1,0 +1,2 @@
+g++ simplewindow.cpp $(sdl2-config --libs --cflags) -ldl -o simplewindow
+
