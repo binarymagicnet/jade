@@ -6,8 +6,8 @@ CONSTANT INT SCREEN_WIDTH = 640;
 CONSTANT INT SCREEN_HEIGHT = 480;
 
 MAIN
-    DIM AS SDL_Window* window = NULL;
-    DIM AS SDL_Surface* screenSurface = NULL;
+    DIM AS PWINDOW window = NULL;
+    DIM AS PSURFACE screenSurface = NULL;
     
     IF ( SDL_Init( SDL_INIT_VIDEO ) < 0 ) THEN
         PRINT( SDL_GetError() );
