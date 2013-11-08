@@ -2,4 +2,4 @@ Simple SDL Test.
 
 Compile with:
 
-g++ -ldl $(sdl-config --libs --cflags)  -lSDL_image -lSDL_ttf test.cpp -o test
+g++ test.cpp $(sdl-config --libs --cflags) -ldl -lSDL_image -lSDL_ttf -o test
