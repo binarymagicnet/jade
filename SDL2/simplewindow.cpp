@@ -8,6 +8,8 @@ CONSTANT INT SCREEN_HEIGHT = 480;
 MAIN
     DIM AS PWINDOW window = NULL;
     DIM AS PSURFACE screenSurface = NULL;
+    DIM AS BOOL quit = false;
+    DIM AS SDL_Event e;
     
     IF ( SDL_Init( SDL_INIT_VIDEO ) < 0 ) THEN
         PRINT( SDL_GetError() );
@@ -25,12 +27,22 @@ MAIN
         ELSE
             // Get Window Surface
             screenSurface = SDL_GetWindowSurface( window );
-            // Fill the surface with White
-            SDL_FillRect( screenSurface, NULL, SDL_MapRGB( screenSurface->format, 255, 255, 255 ) );
-            // Update the Surface
-            SDL_UpdateWindowSurface( window );
-            // Wait 5 seconds
-            SDL_Delay( 5000 );
+
+            
+            WHILE (NOT quit) BEGIN
+                WHILE ( SDL_PollEvent( ADDR e) != 0 ) BEGIN
+                    SELECT (e.type) BEGIN
+                        CASE SDL_QUIT:
+                            quit = true;
+                        ENDCASE
+                    ENDSELECT
+                WEND
+                // Fill the surface with White
+                SDL_FillRect( screenSurface, NULL, SDL_MapRGB( screenSurface->format, 255, 255, 255 ) );
+                // Update the Surface
+                SDL_UpdateWindowSurface( window );
+            
+            WEND
         ENDIF
     ENDIF
     
