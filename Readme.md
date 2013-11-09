@@ -12,7 +12,7 @@
 
 `clang++ demo.cpp -o demo`
 
-### This is a proof of concept of using a BASIC-like syntax to program C++.
+### This is a proof of concept using a BASIC-like syntax to program C++.
 
 ### For the list of current Keywords, see the Keywords.txt file
 
