@@ -1,4 +1,4 @@
-Simple SDL Test.
+Simple SDL1 Test.
 
 Compile with:
 
