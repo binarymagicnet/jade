@@ -1,0 +1,1 @@
+g++ pong.cpp $(sdl2-config --libs --cflags) -ldl -o pong
