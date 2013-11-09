@@ -1,0 +1,1 @@
+fltk-config --libs --cxxflags --use-images --use-gl --ldstaticflags --compile fltkdemo.cpp
