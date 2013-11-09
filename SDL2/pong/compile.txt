@@ -1,1 +1,5 @@
 g++ pong.cpp $(sdl2-config --libs --cflags) -ldl -o pong
+
+OR
+
+g++ pong.cpp $(pkg-config --libs --cflags sdl2 SDL2_image SDL2_mixer SDL2_ttf) -o pong
