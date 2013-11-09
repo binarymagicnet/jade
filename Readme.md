@@ -1,6 +1,6 @@
 # JADE
 
-### *(Jade’s A Development Experiment)*
+### *(Jade’s A Developing Experiment)*
 
 ### JADE is a set of include files with Macros and Functions that seeks to provide a Basic-Like way of creating c++ code.
 
