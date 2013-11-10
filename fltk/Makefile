@@ -7,7 +7,7 @@ fltkdemo:
 	$(CMD) $(FLAGS) $@.cpp
 	
 clean:
-	@rm fltkdemo
+	@rm -f fltkdemo
 	@rm -rf fltkdemo.app
     
     
