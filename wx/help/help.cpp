@@ -50,7 +50,9 @@ FUNCTION BOOL MyApp::OnInit() DO
   fName.Assign( wxT("book.htb") );
 
   /* Dont exit immediately when app window is closed */
-  SetExitOnFrameDelete(false);
+  #ifdef __APPLE__
+    SetExitOnFrameDelete(false);
+  #endif
 
   /* Initialize all available image handlers */
   wxInitAllImageHandlers();
