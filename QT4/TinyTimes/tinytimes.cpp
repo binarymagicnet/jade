@@ -34,7 +34,6 @@ SUB TT::BuildTable(QAbstractButton *button) DO
 	DIM AS INT I;
 	DIM AS QString buf;
 
-
 	ui.listWidget->clear();
 	FOR (I = 1 TO I<11 STEP I++) DO
 	   buf = QString("%1 %2 %3 %4 %5").arg(button->text()).arg(" X ").arg(QString::number(I)).arg(" = ").arg(QString::number(I*button->text().toInt()));
@@ -46,7 +45,7 @@ ENDSUB
 MAIN
     DIM AS QApplication app(argc, argv);
 
-    DIM AS TT *TinyTimes = new TT;
+    DIM AS TT PTR TinyTimes = new TT;
     TinyTimes->Center();
     TinyTimes->show();
     RETURN app.exec();
