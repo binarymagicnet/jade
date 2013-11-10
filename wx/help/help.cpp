@@ -1,9 +1,3 @@
-
-
-/* This is how Im creating a MAC application bundle while testing
-   Uncomment this if compiling under MacOS
-   $onexit "rm -rf $FILE$.app && mkdir -p $FILE$.app/Contents/MacOS && cp $FILE$ $FILE$.app/Contents/MacOS && open $FILE$.app"
-*/
 #include "jade.h"
 #include <wx/wx.h>
 #include <wx/image.h>
