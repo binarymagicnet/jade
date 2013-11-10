@@ -86,7 +86,7 @@ ENDFUNCTION
 
 FUNCTION CSTRING MCASE$ (CSTRING S) BEGIN
   DIM AS CSTRING tmpStr(S);
-  DIM AS bool capFlag;
+  DIM AS bool capFlag = FALSE;
   DIM AS register size_t i;
  
 

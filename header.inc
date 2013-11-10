@@ -33,7 +33,7 @@
 #define ENDFUNCTION }
 #define DIM
 #define AS
-#define SUB   void
+#define SUB void
 #define ENDSUB }
 #define BEGIN {
 #define END   }
@@ -44,7 +44,6 @@
 #define ADDR &
 #define INCR ++
 #define DECR --
-#define NEXT ++
 #define PRIOR --
 #define BYREF *
 #define NOT not
@@ -78,6 +77,17 @@
 #define BREAK break;
 #define SHORT short
 #define LPCHAR char*
+#define CLASS class
+#define ENDCLASS };
+#define CONSTRUCTOR
+#define ENDCONSTRUCTOR }
+#define DO {
+#define NEXT }
+
+
+
+
+
 
 #ifndef TRUE
   #define TRUE 1
