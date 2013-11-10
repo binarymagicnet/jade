@@ -36,16 +36,16 @@
 #define SUB void
 #define ENDSUB }
 #define BEGIN {
-#define END   }
-#define AND   &&
-#define OR    ||
+#define END }
+#define AND &&
+#define OR ||
 #define CLASS class
 #define TYPE typedef struct
 #define ADDR &
 #define INCR ++
 #define DECR --
-#define PRIOR --
 #define BYREF *
+#define PTR *
 #define NOT not
 #define IF if
 #define THEN {
