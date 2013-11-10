@@ -5,9 +5,9 @@
 
 MAIN
   DIM AS INT top = 40;
-  DIM AS WINDOW *win;
-  DIM AS INPUT *txtSource, *txtDest;
-  DIM AS BUTTON *btnSource, *btnDest;
+  DIM AS WINDOW PTR win;
+  DIM AS INPUT PTR txtSource, PTR txtDest;
+  DIM AS BUTTON PTR btnSource, PTR btnDest;
 
   win = new WINDOW(690,486,"FLTK Demo");
   win->position((Fl::w() - win->w())/2, (Fl::h() - win->h())/2);
