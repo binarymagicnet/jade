@@ -1,6 +1,5 @@
 #include "../../jade.h"
 #include "../sdl2.inc"
-#include <SDL.h>
 
 
 MAIN

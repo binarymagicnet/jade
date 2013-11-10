@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="pong" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/pong" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/pong" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="D:/CodeBlocks/SDL2-2.0.1/i686-w64-mingw32/include" />
+		</Compiler>
+		<Linker>
+			<Add library="mingw32" />
+			<Add library="SDL2_net" />
+			<Add library="SDL2_ttf" />
+			<Add library="SDL2_mixer" />
+			<Add library="SDL2_image" />
+			<Add library="SDL2main" />
+			<Add library="SDL2.dll" />
+			<Add library="SDL2" />
+			<Add library="user32" />
+			<Add library="gdi32" />
+			<Add library="winmm" />
+			<Add library="dxguid" />
+			<Add directory="D:/CodeBlocks/SDL2-2.0.1/i686-w64-mingw32/lib" />
+		</Linker>
+		<Unit filename="pong.cpp" />
+		<Unit filename="sdl2.inc" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
