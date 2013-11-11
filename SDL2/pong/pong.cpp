@@ -8,10 +8,10 @@ MAIN
     Init(SDL_INIT_VIDEO);
     DIM AS PWINDOW window;
     DIM AS PRENDERER renderer;
-    DIM AS BOOL p1_up = false;
-    DIM AS BOOL p1_down = false;
-    DIM AS BOOL p2_up = false;
-    DIM AS BOOL p2_down = false;
+//     DIM AS BOOL p1_up = false;
+//     DIM AS BOOL p1_down = false;
+//     DIM AS BOOL p2_up = false;
+//     DIM AS BOOL p2_down = false;
 
     DIM AS INT p1_y = 199;
     DIM AS INT p2_y = 199;
@@ -24,8 +24,8 @@ MAIN
     DIM AS INT ball_x = 639 / 2;
     DIM AS INT ball_y = 479 / 2;
 
-    DIM AS INT ball_w = 8;
-    DIM AS INT ball_h = 8;
+//     DIM AS INT ball_w = 8;
+//     DIM AS INT ball_h = 8;
 
     DIM AS INT ball_x_vel = 5;
     DIM AS INT ball_y_vel = 0;
@@ -35,8 +35,8 @@ MAIN
     DIM AS INT p1_score = 0;
     DIM AS INT p2_score = 0;
 
-    DIM AS INT BALL_WIDTH = 10;
-    DIM AS INT BALL_HEIGHT = 10;
+//     DIM AS INT BALL_WIDTH = 10;
+//     DIM AS INT BALL_HEIGHT = 10;
 
     CONSTANT INT Y_MIN = 0;
     CONSTANT INT Y_MAX = 399;
