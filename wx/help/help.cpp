@@ -35,7 +35,6 @@ IMPLEMENT_APP(MyApp)
 
 /* Initialize Application */
 FUNCTION BOOL MyApp::OnInit() DO
-	INT i;
 
 	/* Used as Exit status flag */
   m_exitIfNoMainWindow = FALSE;
