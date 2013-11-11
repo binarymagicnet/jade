@@ -12,7 +12,8 @@ SUB txtIt(CSTRING pStr , ...) BEGIN
 ENDSUB
 
 DIM AS INT FPS = 40;    // Assign a FPS
-DIM AS INT NextTick , interval; // Used by FPS_Fn
+DIM AS UINT NextTick;   // Used by FPS_Fn
+DIM AS INT interval;    // Used by FPS_Fn
 
 // Initialize FPS_Fn( )
 SUB FPS_Initialize() BEGIN
@@ -86,8 +87,8 @@ MAIN
     DIM AS INT aTick = 0;
     DIM AS SHORT dx = 2; // The movement value when moving the object anim[ ]
     PSURFACE screen;
-    
-    ENUM 
+
+    ENUM
         pic1,
         pic_No
     ENDENUM
@@ -148,8 +149,8 @@ MAIN
                 txtRect.x = 30 + i*30;
                 txtRect.y = 30 + j*15;
                 SDL_BlitSurface( imgTxt , NULL , screen , &txtRect );
-            END 
-        END 
+            END
+        END
 
         txtIt("%1d %1d %1d %1d", bKeyUP , bKeyDOWN , bKeyLEFT , bKeyRIGHT);
         fColor = fColorW; // Default is white color
@@ -180,7 +181,7 @@ MAIN
                         CASE_ELSE:
                         ENDCASE
                     ENDSELECT
-                ENDCASE 
+                ENDCASE
 
                 CASE SDL_KEYUP:
                     SELECT ( event.key.keysym.sym ){
@@ -198,17 +199,17 @@ MAIN
                         ENDCASE
                         CASE_ELSE:
                         ENDCASE
-                    ENDSELECT 
+                    ENDSELECT
                 ENDCASE
-                
+
                 CASE SDL_QUIT:
                     bRun = 0;
                 ENDCASE
-                
+
                 CASE_ELSE:
                 ENDCASE
             ENDSELECT
-        WEND 
+        WEND
 
         // Deal with key states
         IF (bKeyUP) animRect.y = animRect.y - dx;
