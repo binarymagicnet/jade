@@ -18,4 +18,4 @@
 
 ### For the Function/Sub prototypes, see the Prototypes.txt file
 
-### To use, copy "jade.h", "header.inc" and "runtime.inc" to you project folder and #include "jade.h"
+### To use, copy "jade.h", "header.inc" and "runtime.inc" to your project folder and #include "jade.h"
