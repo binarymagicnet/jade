@@ -71,6 +71,10 @@ MAIN
   PRINT ( "SAVEFILE()" );
   SAVEFILE(fileContents,"output.txt");
   PRINT ( "Contents saved to 'output.txt'");
+  PRINT ();
+
+  PRINT ( "FORMAT$(\"%d %s\", 10, \"TEN\")" );
+  PRINT ( FORMAT$("%d %s",10, "TEN") );
 
 
 ENDMAIN

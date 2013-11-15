@@ -14,9 +14,32 @@ DECLARE FUNCTION CSTRING ENC$ (CSTRING,INT=34,INT=34);
 DECLARE FUNCTION CSTRING REVERSE$ (CSTRING);
 DECLARE FUNCTION CSTRING REPLACE$ (CSTRING subject, CONSTANT CSTRING& search, CONSTANT CSTRING& replace);
 DECLARE FUNCTION INT VAL (CSTRING);
+DECLARE FUNCTION CSTRING FORMAT$ (CONSTANT CSTRING &fmt, ...);
 DECLARE SUB PRINT (CSTRING);
 DECLARE SUB SAVEFILE(CSTRING src, CSTRING fname);
 
+
+FUNCTION CSTRING FORMAT$ (CONSTANT CSTRING &fmt, ...) BEGIN
+    DIM AS VECTOR<char> str(100,'\0');
+    DIM AS va_list ap;
+    DIM AS INT n;
+
+    WHILE (TRUE) {
+        va_start(ap, fmt);
+        n = vsnprintf(str.data(), str.size(), fmt.c_str(), ap);
+        va_end(ap);
+        IF ((n > -1) AND (size_t(n) < str.size())) THEN
+            RETURN str.data();
+        ENDIF
+        IF (n > -1) THEN
+            str.resize( n + 1 );
+        ELSE
+            str.resize( str.size() * 2);
+        ENDIF
+    WEND
+
+    RETURN str.data();
+ENDFUNCTION
 
 FUNCTION CSTRING REVERSE$ (CSTRING src) BEGIN
     RETURN CSTRING( src.rbegin(),src.rend() );
@@ -88,7 +111,7 @@ FUNCTION CSTRING MCASE$ (CSTRING S) BEGIN
   DIM AS CSTRING tmpStr(S);
   DIM AS bool capFlag = FALSE;
   DIM AS register size_t i;
- 
+
 
   std::transform(tmpStr.begin(),tmpStr.end(),tmpStr.begin(),::tolower);
 
@@ -191,7 +214,7 @@ ENDFUNCTION
 FUNCTION CSTRING REPLACE$ (CSTRING subject, CONSTANT CSTRING& search, CONSTANT CSTRING& replace) BEGIN
 	DIM AS size_t pos = 0;
 
-	
+
     WHILE( ( pos = subject.find(search, pos) ) != CSTRING::npos) BEGIN
          subject.replace(pos, search.length(), replace);
          pos += replace.length();
