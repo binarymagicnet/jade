@@ -1,4 +1,5 @@
 ENC$ (CSTRING  A, INT L, INT R)
+FORMAT$ (CONSTANT CSTRING &fmt, ...)
 INSTR (CSTRING  s,CSTRING  match, size_t offset)
 LCASE$ (CSTRING str)
 LEFT$ (CSTRING s, INT length)
