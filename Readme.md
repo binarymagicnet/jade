@@ -17,3 +17,5 @@
 ### For the list of current Keywords, see the Keywords.txt file
 
 ### For the Function/Sub prototypes, see the Prototypes.txt file
+
+### To use, copy "jade.h", "header.inc" and "runtime.inc" to you project folder and #include "jade.h"

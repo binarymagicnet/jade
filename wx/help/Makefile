@@ -5,7 +5,7 @@ LDFLAGS = $(shell wx-config --libs --cflags) -ldl
 PLATFORM := $(shell uname -s)
 
 help:
-	$(CC) $@.cpp $(LDFLAGS) -o $@
+	$(CC) -Wall $@.cpp $(LDFLAGS) -o $@
 
 clean:
 	@$(RM) -f help

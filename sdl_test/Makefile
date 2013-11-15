@@ -1,9 +1,9 @@
-all:pong
+all:test
 
 CC = g++
-LDFLAGS = $(shell sdl2-config --libs --cflags) -ldl
+LDFLAGS = $(shell sdl-config --libs --cflags) -ldl
 
-pong:
+test:
 	$(CC) -Wall $@.cpp $(LDFLAGS) -o $@
 
 clean:
