@@ -15,9 +15,26 @@ DECLARE FUNCTION CSTRING REVERSE$ (CSTRING);
 DECLARE FUNCTION CSTRING REPLACE$ (CSTRING subject, CONSTANT CSTRING& search, CONSTANT CSTRING& replace);
 DECLARE FUNCTION INT VAL (CSTRING);
 DECLARE FUNCTION CSTRING FORMAT$ (CONSTANT CSTRING &fmt, ...);
+DECLARE FUNCTION VECTOR<CSTRING> SPLIT (CONSTANT CSTRING input, CONSTANT CSTRING separators, BOOL remove_empty = TRUE);
 DECLARE SUB PRINT (CSTRING);
 DECLARE SUB SAVEFILE(CSTRING src, CSTRING fname);
 
+FUNCTION VECTOR<CSTRING> SPLIT (CONSTANT CSTRING input, CONSTANT CSTRING separators, BOOL remove_empty) BEGIN
+	  DIM VECTOR<CSTRING> lst;
+    DIM std::ostringstream word;
+
+    FOR (UINT n = 0 TO n < input.size() STEP n++) BEGIN
+        IF (CSTRING::npos == separators.find(input[n])) THEN
+            word << input[n];
+        ELSE
+            IF (NOT word.str().empty() OR NOT remove_empty) lst.push_back(word.str());
+            word.str("");
+        ENDIF
+    END
+    IF (NOT word.str().empty() OR NOT remove_empty) lst.push_back(word.str());
+
+	RETURN lst;
+ENDFUNCTION
 
 FUNCTION CSTRING FORMAT$ (CONSTANT CSTRING &fmt, ...) BEGIN
     DIM AS VECTOR<char> str(100,'\0');
