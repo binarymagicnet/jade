@@ -3,10 +3,12 @@
 # KEYWORDS
 KEYWORDS=$(ack '#define (\w+.|\w+)' header.inc  --output='$1')'\n'
 KEYWORDS+=$(ack '^FUNCTION \w+ (\w+.|\w+)' runtime.inc  --output='$1')'\n'
+KEYWORDS+=$(ack '^FUNCTION \w+<\w+> (\w+.|\w+)' runtime.inc --output='$1')'\n'
 KEYWORDS+=$(ack '^SUB (\w+)' runtime.inc  --output='$1')
 
 # FUNCTION/SUB PROTOTYPES
 PROTO=$(ack '^FUNCTION \w+ (.+\))' runtime.inc  --output='$1')'\n'
+PROTO+=$(ack '^FUNCTION \w+<\w+> (.+\))' runtime.inc  --output='$1')'\n'
 PROTO+=$(ack '^SUB (.+\))' runtime.inc  --output='$1')
 #
 
