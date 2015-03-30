@@ -67,6 +67,7 @@
 #define STR$( x ) dynamic_cast< std::ostringstream & >( ( std::ostringstream() << std::dec << x ) ).str()
 #define BOOL bool
 #define INT int
+#define INTEGER int
 #define UINT unsigned int
 #define VECTOR std::vector
 #define MAP std::map
@@ -83,6 +84,8 @@
 #define ENDCONSTRUCTOR }
 #define DO {
 #define NEXT }
+#define STRARRAY VECTOR<CSTRING>
+#define LEN(x) x.size()
 
 
 
