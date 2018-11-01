@@ -242,3 +242,11 @@ ENDFUNCTION
 FUNCTION INT VAL (CSTRING str) BEGIN
     RETURN atoi(str.c_str());
 ENDFUNCTION
+
+FUNCTION CSTRING GRAB$(CONSTANT CSTRING &src, CONSTANT CSTRING &start, CONSTANT CSTRING &stop) {
+    DIM AS size_t begin = src.find(start);
+    DIM AS size_t end = (begin + start.length());
+    DIM AS size_t term = src.find(stop);
+
+    return src.substr(end, (term - end));
+}
