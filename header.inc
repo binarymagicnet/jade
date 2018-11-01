@@ -33,6 +33,7 @@
 #define ENDFUNCTION }
 #define DIM
 #define AS
+#define DEF
 #define SUB void
 #define ENDSUB }
 #define BEGIN {
@@ -70,6 +71,7 @@
 #define INTEGER int
 #define UINT unsigned int
 #define VECTOR std::vector
+#define ARRAY std::vector
 #define MAP std::map
 #define CHAR char
 #define ENUM enum {
