@@ -18,6 +18,16 @@ DECLARE FUNCTION CSTRING FORMAT$ (CONSTANT CSTRING fmt, ...);
 DECLARE FUNCTION VECTOR<CSTRING> SPLIT (CONSTANT CSTRING input, CONSTANT CSTRING separators, BOOL remove_empty = TRUE);
 DECLARE SUB PRINT (CSTRING);
 DECLARE SUB SAVEFILE(CSTRING src, CSTRING fname);
+DECLARE FUNCTION CSTRING REGEX (CSTRING src, CSTRING query);
+
+FUNCTION CSTRING REGEX (CSTRING src, CSTRING query) {
+    CSTRING result;
+    REGMATCH match;
+    REGQUERY term(query);
+    if (regex_search(src, match, term) == true)
+        result = match[1];
+    return result;
+ENDFUNCTION
 
 FUNCTION VECTOR<CSTRING> SPLIT (CONSTANT CSTRING input, CONSTANT CSTRING separators, BOOL remove_empty) BEGIN
 	  DIM VECTOR<CSTRING> lst;
@@ -127,7 +137,7 @@ ENDFUNCTION
 FUNCTION CSTRING MCASE$ (CSTRING S) BEGIN
   DIM AS CSTRING tmpStr(S);
   DIM AS bool capFlag = FALSE;
-  DIM AS register size_t i;
+  DIM AS size_t i;
 
 
   std::transform(tmpStr.begin(),tmpStr.end(),tmpStr.begin(),::tolower);

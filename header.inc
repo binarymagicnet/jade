@@ -24,6 +24,7 @@
 #include <vector>
 #include <map>
 #include <algorithm>
+#include <regex>
 
 /* DEFINES */
 #define MAIN int main (int argc, char** argv) {
@@ -88,7 +89,8 @@
 #define NEXT }
 #define STRARRAY VECTOR<CSTRING>
 #define LEN(x) x.size()
-
+#define REGQUERY std::regex
+#define REGMATCH std::smatch
 
 
 
