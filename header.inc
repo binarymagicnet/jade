@@ -61,6 +61,7 @@
 #define _TO_ ...
 #define ENDCASE break;
 #define CASE_ELSE default
+#define CLS printf("\33[2J\33[H")
 #define ENDSELECT }
 #define WHILE while
 #define WEND }
@@ -91,6 +92,8 @@
 #define LEN(x) x.size()
 #define REGQUERY std::regex
 #define REGMATCH std::smatch
+#define PRINTNL printf("\n")
+#define NL std::endl
 
 
 
