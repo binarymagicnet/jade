@@ -5,4 +5,5 @@
     #include "curl.inc"
 #endif
 
+template <typename T>
 
