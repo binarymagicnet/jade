@@ -67,7 +67,8 @@
 #define WEND }
 #define RETURN return
 #define CONSTANT const
-#define STR$( x ) dynamic_cast< std::ostringstream & >( ( std::ostringstream() << std::dec << x ) ).str()
+// #define STR$( x ) dynamic_cast< std::ostringstream & >( ( std::ostringstream() << std::dec << x ) ).str()
+#define STR$(x) std::to_string(x)
 #define BOOL bool
 #define INT int
 #define INTEGER int

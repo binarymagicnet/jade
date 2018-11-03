@@ -24,8 +24,10 @@ FUNCTION CSTRING REGEX (CSTRING src, CSTRING query) {
     CSTRING result;
     REGMATCH match;
     REGQUERY term(query);
-    if (regex_search(src, match, term) == true)
+    if (regex_search(src, match, term,std::regex_constants::match_any) == true){
+    std::cout << match.size() << std::endl;
         result = match[1];
+    }
     return result;
 ENDFUNCTION
 
