@@ -24,6 +24,7 @@
 #include <vector>
 #include <map>
 #include <algorithm>
+#include <regex>
 
 /* DEFINES */
 #define MAIN int main (int argc, char** argv) {
@@ -33,6 +34,7 @@
 #define ENDFUNCTION }
 #define DIM
 #define AS
+#define DEF
 #define SUB void
 #define ENDSUB }
 #define BEGIN {
@@ -59,17 +61,20 @@
 #define _TO_ ...
 #define ENDCASE break;
 #define CASE_ELSE default
+#define CLS printf("\33[2J\33[H")
 #define ENDSELECT }
 #define WHILE while
 #define WEND }
 #define RETURN return
 #define CONSTANT const
-#define STR$( x ) dynamic_cast< std::ostringstream & >( ( std::ostringstream() << std::dec << x ) ).str()
+// #define STR$( x ) dynamic_cast< std::ostringstream & >( ( std::ostringstream() << std::dec << x ) ).str()
+#define STR$(x) std::to_string(x)
 #define BOOL bool
 #define INT int
 #define INTEGER int
 #define UINT unsigned int
 #define VECTOR std::vector
+#define ARRAY std::vector
 #define MAP std::map
 #define CHAR char
 #define ENUM enum {
@@ -86,7 +91,10 @@
 #define NEXT }
 #define STRARRAY VECTOR<CSTRING>
 #define LEN(x) x.size()
-
+#define REGQUERY std::regex
+#define REGMATCH std::smatch
+#define PRINTNL printf("\n")
+#define NL std::endl
 
 
 
@@ -105,5 +113,7 @@ typedef std::string CSTRING;
 
 
 char    LF  [2]= {10,0};  // Line Feed
+
+
 
 

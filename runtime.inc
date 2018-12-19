@@ -18,6 +18,18 @@ DECLARE FUNCTION CSTRING FORMAT$ (CONSTANT CSTRING fmt, ...);
 DECLARE FUNCTION VECTOR<CSTRING> SPLIT (CONSTANT CSTRING input, CONSTANT CSTRING separators, BOOL remove_empty = TRUE);
 DECLARE SUB PRINT (CSTRING);
 DECLARE SUB SAVEFILE(CSTRING src, CSTRING fname);
+DECLARE FUNCTION CSTRING REGEX (CSTRING src, CSTRING query);
+
+FUNCTION CSTRING REGEX (CSTRING src, CSTRING query) {
+    CSTRING result;
+    REGMATCH match;
+    REGQUERY term(query);
+    if (regex_search(src, match, term,std::regex_constants::match_any) == true){
+    std::cout << match.size() << std::endl;
+        result = match[1];
+    }
+    return result;
+ENDFUNCTION
 
 FUNCTION VECTOR<CSTRING> SPLIT (CONSTANT CSTRING input, CONSTANT CSTRING separators, BOOL remove_empty) BEGIN
 	  DIM VECTOR<CSTRING> lst;
@@ -127,7 +139,7 @@ ENDFUNCTION
 FUNCTION CSTRING MCASE$ (CSTRING S) BEGIN
   DIM AS CSTRING tmpStr(S);
   DIM AS bool capFlag = FALSE;
-  DIM AS register size_t i;
+  DIM AS size_t i;
 
 
   std::transform(tmpStr.begin(),tmpStr.end(),tmpStr.begin(),::tolower);
@@ -242,3 +254,11 @@ ENDFUNCTION
 FUNCTION INT VAL (CSTRING str) BEGIN
     RETURN atoi(str.c_str());
 ENDFUNCTION
+
+FUNCTION CSTRING GRAB$(CONSTANT CSTRING &src, CONSTANT CSTRING &start, CONSTANT CSTRING &stop) {
+    DIM AS size_t begin = src.find(start);
+    DIM AS size_t end = (begin + start.length());
+    DIM AS size_t term = src.find(stop);
+
+    return src.substr(end, (term - end));
+}
