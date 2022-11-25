@@ -83,13 +83,15 @@ SUB PRINT (CSTRING A="") BEGIN
 ENDSUB
 
 FUNCTION CSTRING LTRIM$ (CSTRING s) BEGIN
-  s.erase(s.begin(),std::find_if(s.begin(),s.end(),std::not1(std::ptr_fun<INT,INT>(std::isspace))));
+  s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](char c) { return !std::isspace<char>(c, std::locale::classic());}));
   RETURN s;
 ENDFUNCTION
 
 
 FUNCTION CSTRING RTRIM$ (CSTRING s) BEGIN
-  s.erase(std::find_if(s.rbegin(),s.rend(),std::not1(std::ptr_fun<INT,INT>(std::isspace))).base(),s.end());
+  auto it = std::find_if(s.rbegin(), s.rend(), [](char c) { return !std::isspace<char>(c, std::locale::classic());});
+  s.erase(it.base(), s.end());
+
   RETURN s;
 ENDFUNCTION
 
