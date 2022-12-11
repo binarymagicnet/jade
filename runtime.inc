@@ -19,6 +19,7 @@ DECLARE FUNCTION VECTOR<CSTRING> SPLIT (CONSTANT CSTRING input, CONSTANT CSTRING
 DECLARE SUB PRINT (CSTRING);
 DECLARE SUB SAVEFILE(CSTRING src, CSTRING fname);
 DECLARE FUNCTION CSTRING REGEX (CSTRING src, CSTRING query);
+DECLARE FUNCTION CSTRING REPEAT$ (const std::string &str, unsigned int times);
 
 FUNCTION CSTRING REGEX (CSTRING src, CSTRING query) {
     CSTRING result;
@@ -263,4 +264,14 @@ FUNCTION CSTRING GRAB$(CONSTANT CSTRING &src, CONSTANT CSTRING &start, CONSTANT 
     DIM AS size_t term = src.find(stop);
 
     return src.substr(end, (term - end));
+}
+
+FUNCTION CSTRING REPEAT$ (const std::string &str, unsigned int times) {
+  std::stringstream ss;
+
+  for(unsigned int i=0; i<times; ++i) {
+    ss << str;
+  }
+  
+  return ss.str();
 }
